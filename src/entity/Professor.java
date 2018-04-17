@@ -3,13 +3,18 @@ package entity;
 public class Professor extends Pessoa {
 
 	private Double salario;
-	private String turno;
-	
 	// Agregação
-	private Especializacao titulo;
-	
+	private Especializacao especializacao;
+
 	public Professor() {
 
+	}
+
+	public Professor(Integer id, String matricula, String nome, String email, String turno, Double salario,
+			Especializacao especializacao) {
+		super(id, matricula, nome, email, turno);
+		this.salario = salario;
+		this.especializacao = especializacao;
 	}
 
 	public Double getSalario() {
@@ -20,27 +25,18 @@ public class Professor extends Pessoa {
 		this.salario = salario;
 	}
 
-	public String getTurno() {
-		return turno;
+	public Especializacao getEspecializacao() {
+		return especializacao;
 	}
 
-	public void setTurno(String turno) {
-		this.turno = turno;
+	public void setEspecializacao(Especializacao especializacao) {
+		this.especializacao = especializacao;
 	}
 
-	public Especializacao getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(Especializacao titulo) {
-		this.titulo = titulo;
-	}
-	
 	@Override
 	protected String geraPerfil() {
-		return super.geraPerfil()
-				+ "\nSalário: " 		+ salario
-				+ "\nTurno: " 			+ turno
-				+ "\nEspecialização: " 	+ titulo;
+		return super.geraPerfil() + 
+				"\nSalário: " + salario + 
+				"\nEspecialização: " + especializacao;
 	}
 }

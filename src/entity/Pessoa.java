@@ -7,12 +7,24 @@ public abstract class Pessoa {
 	protected String matricula;
 	protected String nome;
 	protected String email;
+	protected String turno;
+	
+	protected Endereco endereco;
 	
 	// construtor sem argumentos
 	public Pessoa() {
 		
 	}
 	
+	public Pessoa(Integer id, String matricula, String nome, String email, String turno) {
+		this.id = id;
+		this.matricula = matricula;
+		this.nome = nome;
+		this.email = email;
+		this.turno = turno;
+	}
+
+
 	// gets e sets (alt + shift + S, R)
 	public Integer getId() {
 		return id;
@@ -45,6 +57,23 @@ public abstract class Pessoa {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getTurno() {
+		return turno;
+	}
+
+	public void setTurno(String turno) {
+		this.turno = turno;
+	}
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	// sobrecarga (equals e hashcode) - alt + shift + S, H
 	@Override
 	public int hashCode() {
@@ -93,6 +122,8 @@ public abstract class Pessoa {
 		return "Os dados são:\n"
 				+ "Matricula: " + matricula
 				+ "\nNome: " 	+ nome
-				+ "\nEmail: " 	+ email;
+				+ "\nEmail: " 	+ email
+				+ "\nTurno: " 	+ turno
+				+ "\nEndereço: " 	+ endereco;
 	}
 }

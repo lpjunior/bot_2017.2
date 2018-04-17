@@ -1,5 +1,6 @@
-package application;
+package persist;
 
+import entity.Endereco;
 import entity.Especializacao;
 import entity.Professor;
 
@@ -19,7 +20,16 @@ public class TestaProfessor {
 		esp.setTitulo("Mestrando Eng. Computação");
 		
 		// associando a classe professor
-		prof.setTitulo(esp);
+		prof.setEspecializacao(esp);
+
+		// Atribuindo a instancia de endereço ao obj de prof
+		prof.setEndereco(new Endereco());
+		
+		prof.getEndereco().setId(123);
+		prof.getEndereco().setLogradouro("Rua 0");
+		prof.getEndereco().setBairro("Centro");
+		prof.getEndereco().setCidade("Rio de Janeiro");
+		prof.getEndereco().setCep("21000-000");
 		
 		System.out.println(prof);
 	}
