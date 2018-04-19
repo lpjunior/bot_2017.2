@@ -1,4 +1,4 @@
-package persist;
+package test;
 
 import entity.AlunoTec;
 import entity.Endereco;
