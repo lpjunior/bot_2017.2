@@ -32,5 +32,9 @@ public class TestaProfessor {
 		prof.getEndereco().setCep("21000-000");
 		
 		System.out.println(prof);
+		
+		Professor prof2 = new Professor();
+		prof2.setNome("João");
+		System.out.println(prof2);
 	}
 }
