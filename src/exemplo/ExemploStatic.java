@@ -1,7 +1,7 @@
 package exemplo;
 
 public class ExemploStatic {
-	static String nome;
+	final static String nome = "Valor";
 	String var1;
 	String var2;
 
@@ -10,11 +10,11 @@ public class ExemploStatic {
 		ExemploStatic es1 = new ExemploStatic();
 		ExemploStatic es2 = new ExemploStatic();
 		
-		es1.nome = "Test";
+//		es1.nome = "Test";
 		es1.var1 = "TestTest";
 		es1.var2 = "TestTestTest";
 		
-		es2.nome = "Test2";
+//		es2.nome = "Test2";
 		es2.var1 = "TesteTeste";
 		es2.var2 = "TesteTesteTeste";
 		
