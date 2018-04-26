@@ -10,3 +10,10 @@ create table endereco(
 	cep varchar(9),
 	id_pessoa int
 );
+
+
+create table especializacao (
+	id int primary key auto_increment,
+	titulo varchar(255),
+	id_professor int
+);

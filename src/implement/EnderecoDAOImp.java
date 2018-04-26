@@ -23,4 +23,14 @@ public class EnderecoDAOImp {
 		}
 		return false;
 	}
+	
+	public Endereco buscarPorId(int id) {
+		try {
+			return dao.localizaEndereco(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			return new Endereco();
+		}
+	}
 }

@@ -2,6 +2,7 @@ package persist;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entity.Endereco;
@@ -47,5 +48,44 @@ public class EnderecoDAO extends DAO {
 			if(conn != null)
 				conn.close();
 		}
+	}
+	
+	public Endereco localizaEndereco(int id) throws SQLException {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.prepareStatement("select * from endereco where id = ?");
+			stmt.setInt(1, id);
+			
+			// vai carregar o rs com o resultado do banco
+			rs = stmt.executeQuery();
+			Endereco end = null;
+			
+			if(rs.next()) {
+				end = criaObjEndereco(rs);
+			}
+			
+			return end;
+		} finally {
+			if(stmt != null)
+				stmt.close();
+			if(conn != null)
+				conn.close();
+			if(rs != null)
+				rs.close();
+		}
+	}
+	
+	private Endereco criaObjEndereco(ResultSet rs) throws SQLException {
+		// Criação da referencia e instancia de Endereco
+		Endereco endereco = new Endereco();
+		
+		endereco.setId(rs.getInt(1));
+		endereco.setLogradouro(rs.getString(2));
+		endereco.setBairro(rs.getString(3));
+		endereco.setCidade(rs.getString(4));
+		endereco.setCep(rs.getString(5));
+		
+		return endereco;
 	}
 }
