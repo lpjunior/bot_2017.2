@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import entity.Endereco;
 
@@ -66,6 +68,38 @@ public class EnderecoDAO extends DAO {
 			}
 			
 			return end;
+		} finally {
+			if(stmt != null)
+				stmt.close();
+			if(conn != null)
+				conn.close();
+			if(rs != null)
+				rs.close();
+		}
+	}
+	
+	public List<Endereco> buscarEnderecos() throws SQLException {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.prepareStatement("select * from endereco");
+			
+			// vai carregar o rs com o resultado do banco
+			rs = stmt.executeQuery();
+
+			// recebe uma coleção de endereços
+			List<Endereco> listaEndereco = new ArrayList<Endereco>();
+			
+			/*
+			 * Endereco[] vEndereco = new Endereco[10];
+			 * vEndereco[0] = criaObjEndereco(rs);
+			 */
+			
+			if(rs.next()) {
+				listaEndereco.add(criaObjEndereco(rs));
+			}
+			
+			return listaEndereco;
 		} finally {
 			if(stmt != null)
 				stmt.close();
