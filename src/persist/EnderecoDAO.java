@@ -95,7 +95,7 @@ public class EnderecoDAO extends DAO {
 			 * vEndereco[0] = criaObjEndereco(rs);
 			 */
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				listaEndereco.add(criaObjEndereco(rs));
 			}
 			

@@ -10,7 +10,7 @@ public class TestGravarEndereco {
 		
 		Endereco endereco = new Endereco();
 		
-		endereco.setLogradouro("Rua 1, nº 136");
+		endereco.setLogradouro("Rua 4, nº 136");
 		endereco.setBairro("Centro");
 		endereco.setCidade("Rio de Janeiro");
 		endereco.setCep("21000-000");

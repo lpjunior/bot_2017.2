@@ -1,6 +1,8 @@
 package implement;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import entity.Endereco;
 import persist.EnderecoDAO;
@@ -31,6 +33,16 @@ public class EnderecoDAOImp {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 			return new Endereco();
+		}
+	}
+	
+	public List<Endereco> listar() {
+		try {
+			return dao.buscarEnderecos();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			return new ArrayList<Endereco>();
 		}
 	}
 }
