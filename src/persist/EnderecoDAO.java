@@ -110,6 +110,51 @@ public class EnderecoDAO extends DAO {
 		}
 	}
 	
+	public void atualizaEndereco(Endereco e) throws SQLException {
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.prepareStatement("update endereco set logradouro = ?, bairro = ?, cidade = ?, cep = ? where id = ?");
+			
+			stmt.setString(1, e.getLogradouro());
+			stmt.setString(2, e.getBairro());
+			stmt.setString(3, e.getCidade());
+			stmt.setString(4, e.getCep());
+			stmt.setInt(5, e.getId());
+			
+			int flag = stmt.executeUpdate();
+			
+			if(flag == 0)
+				throw new SQLException("Erro ao atualizar o banco.");
+			
+		} finally {
+			if(conn != null)
+				conn.close();
+			if(stmt != null)
+				stmt.close();
+		}
+	}
+	
+	public void delete(int id) throws SQLException {
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.prepareStatement("delete from endereco where id = ?");
+			stmt.setInt(1, id);
+			
+			int flag = stmt.executeUpdate();
+			
+			if(flag == 0)
+				throw new SQLException("Houve um problema ao excluir o endereço.");
+			
+		} finally {
+			if(conn != null)
+				conn.close();
+			if(stmt != null)
+				stmt.close();
+		}
+	}
+	
 	private Endereco criaObjEndereco(ResultSet rs) throws SQLException {
 		// Criação da referencia e instancia de Endereco
 		Endereco endereco = new Endereco();

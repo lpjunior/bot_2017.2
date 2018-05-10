@@ -45,4 +45,19 @@ public class EnderecoDAOImp {
 			return new ArrayList<Endereco>();
 		}
 	}
+	
+	public Boolean atualizar(Endereco e) {
+		try {
+			dao.atualizaEndereco(e);
+			return Boolean.TRUE;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			System.out.println(ex.getMessage());
+		}
+		return Boolean.FALSE;
+	}
+	
+	public boolean excluir(int id) {
+		return false;
+	}
 }
